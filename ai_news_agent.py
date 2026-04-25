@@ -49,25 +49,96 @@ news_context = get_basket_news()
 ai_html_body = generate_ai_summary(news_context)
 
 # Final HTML Wrapper with basic styling
+# Replace the 'final_html' variable in your script with this:
+
 final_html = f"""
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Intelligence Hub</title>
     <style>
-        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; background-color: #f4f7f6; }}
-        h1 {{ color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }}
-        h2 {{ color: #2980b9; margin-top: 30px; }}
-        ul {{ padding-left: 20px; }}
-        li {{ margin-bottom: 10px; }}
-        a {{ color: #3498db; text-decoration: none; font-size: 0.9em; }}
-        .date {{ color: #7f8c8d; font-style: italic; }}
+        :root {{
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #3182ce;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+        }}
+        body {{ 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            line-height: 1.6; 
+            background-color: var(--bg); 
+            color: var(--secondary);
+            margin: 0;
+            padding: 0;
+        }}
+        header {{
+            background: var(--primary);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }}
+        .container {{
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }}
+        .timestamp {{
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }}
+        /* Card Styling */
+        h2 {{ 
+            color: var(--primary);
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+        }}
+        ul {{ list-style: none; padding: 0; }}
+        li {{ 
+            background: var(--card-bg);
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }}
+        li:hover {{
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }}
+        /* Link Styling */
+        a {{ 
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }}
+        a:hover {{ text-decoration: underline; }}
+        
+        /* Mobile Optimization */
+        @media (max-width: 600px) {{
+            header {{ padding: 1.5rem 1rem; }}
+            h1 {{ font-size: 1.4rem; }}
+            li {{ padding: 1rem; }}
+        }}
     </style>
 </head>
 <body>
-    <h1>Daily Intelligence Hub</h1>
-    <p class="date">Last updated: {datetime.now().strftime('%d %B %Y, %I:%M %p')} SGT</p>
-    {ai_html_body}
+    <header>
+        <h1>Daily Intelligence Hub</h1>
+        <div class="timestamp">Updated: {datetime.now().strftime('%d %b %Y | %I:%M %p')} SGT</div>
+    </header>
+    <div class="container">
+        {ai_html_body}
+    </div>
 </body>
 </html>
 """
