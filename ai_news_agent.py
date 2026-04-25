@@ -11,36 +11,32 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-3-flash-preview')
 
 def get_basket_news():
-    # Tailored search query for your specific interests
-    query = "(Singapore business OR SGX) OR (AI automation tech lead) OR (Japan Korea travel) OR (ATP tennis news)"
-    url = f"https://newsapi.org/v2/everything?q={query}&language=en&sortBy=publishedAt&pageSize=20&apiKey={NEWS_API_KEY}"
-    
-    try:
-        response = requests.get(url).json()
-        articles = response.get('articles', [])
-        context = ""
-        for a in articles:
-            context += f"Source: {a['source']['name']}\nTitle: {a['title']}\nSnippet: {a['description']}\nLink: {a['url']}\n\n"
-        return context
-    except Exception as e:
-        return f"Error fetching news: {e}"
+    # Focused but broad enough to find 10+ stories
+    query = "(Singapore business) OR (SGX REIT) OR (tennis ATP news) OR (Japan Korea travel) OR (AI automation enterprise)"
+    # Increased pageSize to 50
+    url = f"https://newsapi.org/v2/everything?q={query}&language=en&sortBy=publishedAt&pageSize=50&apiKey={NEWS_API_KEY}"
+    # ... (rest of your fetching logic)
 
 def generate_ai_summary(raw_data):
-    prompt = f"""
-    You are an AI Chief of Staff. Summarize the following news into a clean, executive "Basket of Categories" for a 60-year-old Tech Lead and Investor in Singapore.
-    
-    Structure the response with these exact headers:
-    - 🇸🇬 Singapore & Business (Focus on SME grants, local banks, and infrastructure)
-    - 💰 Finance & SGX (Focus on REITs, dividends, and blue chips)
-    - 🤖 Technology & AI (Focus on enterprise automation and agentic AI)
-    - 🎾 Sports & Travel (Professional tennis updates and Japan/Korea travel trends)
+prompt = f"""
+You are a Chief of Staff for a Singaporean Tech Lead. 
+Create a detailed intelligence brief with 5-10 stories total across these FIVE distinct categories:
 
-    For each category, provide 5-10 bullet points. Each bullet must end with a [Source Link].
-    Format everything in valid HTML. Use <h2> for headers and <ul>/<li> for lists.
-    
-    Data:
-    {raw_data}
-    """
+1. 🇸🇬 Singapore & Local Business: Focus on infrastructure and SME policy.
+2. 💰 Finance & SGX: Prioritize REIT dividends and blue-chip performance.
+3. 🎾 Tennis: General ATP/WTA news, tournament updates (Madrid/Rome), and equipment.
+4. ✈️ Japan & Korea Travel: Logistics, rail updates, and travel trends for these specific regions.
+5. 🤖 AI & Technology: Enterprise automation, architecture, and developer tools.
+
+REQUIREMENTS:
+- Total stories: Aim for at least 7-10 high-quality items.
+- Format: Use the professional card style. 
+- Links: Use <a href='URL' target='_blank'>Read Original Article →</a>.
+- Content: If no specific news is found for a category, omit the header rather than saying "none."
+
+Data:
+{{raw_data}}
+"""
     response = model.generate_content(prompt)
     return response.text
 
