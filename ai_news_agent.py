@@ -18,25 +18,25 @@ def get_basket_news():
     # ... (rest of your fetching logic)
 
 def generate_ai_summary(raw_data):
-prompt = f"""
-You are a Chief of Staff for a Singaporean Tech Lead. 
-Create a detailed intelligence brief with 5-10 stories total across these FIVE distinct categories:
-
-1. 🇸🇬 Singapore & Local Business: Focus on infrastructure and SME policy.
-2. 💰 Finance & SGX: Prioritize REIT dividends and blue-chip performance.
-3. 🎾 Tennis: General ATP/WTA news, tournament updates (Madrid/Rome), and equipment.
-4. ✈️ Japan & Korea Travel: Logistics, rail updates, and travel trends for these specific regions.
-5. 🤖 AI & Technology: Enterprise automation, architecture, and developer tools.
-
-REQUIREMENTS:
-- Total stories: Aim for at least 7-10 high-quality items.
-- Format: Use the professional card style. 
-- Links: Use <a href='URL' target='_blank'>Read Original Article →</a>.
-- Content: If no specific news is found for a category, omit the header rather than saying "none."
-
-Data:
-{{raw_data}}
-"""
+    prompt = f"""
+    You are a Chief of Staff for a Singaporean Tech Lead. 
+    Create a detailed intelligence brief with 5-10 stories total across these FIVE distinct categories:
+    
+    1. 🇸🇬 Singapore & Local Business: Focus on infrastructure and SME policy.
+    2. 💰 Finance & SGX: Prioritize REIT dividends and blue-chip performance.
+    3. 🎾 Tennis: General ATP/WTA news, tournament updates (Madrid/Rome), and equipment.
+    4. ✈️ Japan & Korea Travel: Logistics, rail updates, and travel trends for these specific regions.
+    5. 🤖 AI & Technology: Enterprise automation, architecture, and developer tools.
+    
+    REQUIREMENTS:
+    - Total stories: Aim for at least 7-10 high-quality items.
+    - Format: Use the professional card style. 
+    - Links: Use <a href='URL' target='_blank'>Read Original Article →</a>.
+    - Content: If no specific news is found for a category, omit the header rather than saying "none."
+    
+    Data:
+    {{raw_data}}
+    """
     response = model.generate_content(prompt)
     return response.text
 
