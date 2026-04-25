@@ -35,7 +35,7 @@ def generate_ai_summary(raw_data):
     - 🤖 Technology & AI (Focus on enterprise automation and agentic AI)
     - 🎾 Sports & Travel (Professional tennis updates and Japan/Korea travel trends)
 
-    For each category, provide 2-3 bullet points. Each bullet must end with a [Source Link].
+    For each category, provide 5-10 bullet points. Each bullet must end with a [Source Link].
     Format everything in valid HTML. Use <h2> for headers and <ul>/<li> for lists.
     
     Data:
