@@ -1,4 +1,5 @@
 name: Daily News Update
+run-name: News Brief for ${{ github.event_name == 'schedule' && 'Scheduled Run' || github.actor }}
 
 on:
   schedule:
