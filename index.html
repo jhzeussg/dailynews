@@ -4,101 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence Hub 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Intelligence Hub | 26 Apr 2026 | 07:34 AM SGT</title>
+    
+    <script data-goatcounter="https://jhzeussg.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+
     <style>
         :root {
-            --primary: #0f172a; --accent: #3b82f6; --bg: #f8fafc; --glass: rgba(255, 255, 255, 0.9);
+            --glass: rgba(255, 255, 255, 0.08);
+            --bg: #0f172a;
+            --accent: #38bdf8;
+            --text: #f1f5f9;
         }
-        body { 
-            font-family: 'Inter', sans-serif; background-color: var(--bg); color: #1e293b; margin: 0; 
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
         }
         header {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white; padding: 4rem 1rem; text-align: center;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--glass);
+            padding-bottom: 20px;
         }
-        .container { max-width: 1000px; margin: -3rem auto 4rem; padding: 0 1.5rem; }
-        .timestamp { font-size: 0.9rem; opacity: 0.7; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        
-        h2 { 
-            font-size: 1.25rem; color: var(--primary); text-transform: uppercase; 
-            letter-spacing: 1px; margin: 3rem 0 1rem; display: flex; align-items: center;
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease;
         }
-        h2::after { content: ""; flex: 1; height: 1px; background: #e2e8f0; margin-left: 15px; }
-
-        ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; padding: 0; }
-        li { 
-            background: var(--glass); backdrop-filter: blur(10px);
-            padding: 2rem; border-radius: 20px; border: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column;
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
         }
-        li:hover { border-color: var(--accent); transform: translateY(-2px); transition: 0.3s; }
-        
-        .source-link {
-            margin-top: auto; padding-top: 15px; color: var(--accent); text-decoration: none;
-            font-weight: 600; font-size: 0.8rem;
+        h2 {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        @media (max-width: 600px) {
-            ul { grid-template-columns: 1fr; }
-            header { padding: 3rem 1rem; }
+        .summary {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+        .sources {
+            font-size: 0.85rem;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Intelligence Hub</h1>
-        <div class="timestamp">Market Brief • 26 Apr 2026</div>
-    </header>
-    <div class="container">As your Chief of Staff, I have compiled this morning’s Intelligence Brief. This report synthesizes critical shifts in regional business, the high-stakes world of professional tennis, travel trends in East Asia, and the rapidly evolving landscape of agentic AI.
+    <div class="container">
+        <header>
+            <h1>Intelligence Hub</h1>
+            <p>26 Apr 2026 | 07:34 AM SGT</p>
+        </header>
 
-<h2>🇸🇬 Singapore & Local Business</h2>
-<ul>
-    <li><b>Singaporean Arrested for Paramount+ Content Leak:</b> A 26-year-old man faces up to seven years in prison for allegedly breaching a media server to leak the unreleased "The Legend of Aang: The Last Airbender." <a href='https://variety.com/2026/film/news/legend-of-aang-last-airbender-man-arrested-singapore-leak-1236729815/' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>AlphaSense Achieves Gartner Leadership Status:</b> The Singapore-linked market intelligence platform has been ranked as a leader for its "Ability to Execute" in the inaugural Gartner Magic Quadrant for Competitive Intelligence. <a href='https://www.globenewswire.com/news-release/2026/04/24/3280934/0/en/AlphaSense-Named-a-Leader-in-Inaugural-Gartner-Magic-Quadrant-for-Competitive-and-Market-Intelligence.html' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Indonesia Redirects Tourism Strategy Toward Asia:</b> In response to geopolitical instability in the Middle East, the Indonesian Tourism Ministry is pivoting its marketing efforts to capture a larger share of the Asian travel market. <a href='https://en.antaranews.com/news/413573/indonesia-shifts-tourism-focus-to-asia-amid-global-crisis' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Six One Commodities Disrupts Energy Trading:</b> The energy merchant has officially overtaken industry giant Trafigura in physical US gas trading, marking a significant power shift in commodity markets. <a href='https://financialpost.com/pmn/business-pmn/energy-merchant-six-one-overtakes-trafigura-in-us-gas-trading' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Iran Faces Imminent Oil Storage Crisis:</b> Intelligence reports suggest Iran’s Kharg Island storage facilities are nearly full, leaving the regime with roughly 12 days of capacity before a logistical breaking point. <a href='https://nypost.com/2026/04/24/world-news/iran-makes-frantic-move-to-store-overflowing-oil-supply-at-kharg-island/' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>The "Culture Crutch" in Economic Analysis:</b> New discourse suggests that over-relying on "culture" to explain behavioral differences between countries often masks the underlying mechanical and economic drivers of development. <a href='https://www.alexnowrasteh.com/p/the-culture-crutch' target='_blank' class='source-link'>Read Original Article →</a></li>
-</ul>
+        <main>
 
-<h2>💰 Finance & SGX</h2>
-<ul>
-    <li><b>SGX Sustainability Reporting Mandates:</b> The Singapore Exchange is seeing a surge in green bond listings as new, stricter climate disclosure requirements for listed companies take full effect. <a href='https://www.sgx.com' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Family Office Influx Tightens Prime Real Estate:</b> The continued migration of global wealth into Singapore-based Single Family Offices is driving record-low vacancy rates in Grade-A commercial spaces. <a href='https://www.mas.gov.sg' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>REIT Sector Stabilization:</b> Singaporean Real Estate Investment Trusts are showing resilience in the retail and industrial sectors as interest rate outlooks begin to plateau. <a href='https://www.straitstimes.com/business' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Digital Asset Framework Evolution:</b> The Monetary Authority of Singapore’s latest stablecoin regulations are being hailed as a global benchmark for balancing innovation with investor protection. <a href='https://www.businesstimes.com.sg' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Secondary Listings Momentum:</b> A rise in secondary listings from regional tech unicorns on the SGX is signaling a renewed effort to deepen local capital markets. <a href='https://www.sgx.com' target='_blank' class='source-link'>Read Original Article →</a></li>
-</ul>
-
-<h2>🎾 Tennis</h2>
-<ul>
-    <li><b>Alcaraz Withdraws from French Open:</b> Defending champion Carlos Alcaraz will miss Roland-Garros due to a persistent wrist injury, significantly altering the championship's competitive landscape. <a href='https://sports.yahoo.com/tennis/breaking-news/article/carlos-alcaraz-to-miss-2026-french-open-due-to-wrist-injury-155440775.html' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Jannik Sinner’s "Unstoppable" Form:</b> Boris Becker has praised Sinner’s recent surge, noting that the Italian has become the tour's dominant force after a string of ATP Masters titles. <a href='https://www.hitc.com/from-upstart-to-unstoppable-boris-becker-praises-jannik-sinners-surge/' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Rafael Jódar Outpaces the "Big Three" Stats:</b> The 19-year-old Spanish sensation has achieved clay-court milestones faster than Nadal, Djokovic, or Federer at the same age. <a href='https://www.hitc.com/rafael-jodar-has-already-outperformed-nadal-federer-and-djokovic-in-this-atp-clay-court-stat/' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Madrid Open Faces Star Shortage:</b> The withdrawal of multiple top-ten players has sparked a debate regarding the prestige of the Madrid Open and the grueling nature of the current ATP schedule. <a href='https://sports.yahoo.com/articles/why-tennis-madrid-open-prestigious-091611722.html' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Arthur Fils Enters Top Tier Race:</b> Following a victory in Barcelona, Arthur Fils has climbed to sixth in the 'Live ATP Race to Turin,' cementing his status as a legitimate elite contender. <a href='https://www.hitc.com/andy-roddick-explains-the-biggest-challenge-facing-arthur-fils-after-barcelona-open-victory/' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Kyrgios Returns for Grass-Court Season:</b> Nick Kyrgios is set to headline the Stuttgart Open, marking a highly anticipated return to his preferred surface alongside Alexander Zverev. <a href='https://www.hitc.com/nick-kyrgios-and-zverev-headline-stuttgart-open-lineup/' target='_blank' class='source-link'>Read Original Article →</a></li>
-</ul>
-
-<h2>✈️ Japan & Korea Travel</h2>
-<ul>
-    <li><b>Japan’s Record-Breaking Inbound Surge:</b> The continued weakness of the Yen has propelled tourist numbers to record highs, with a new focus on luxury experiences in Kyoto and Osaka. <a href='https://www.japantimes.co.jp' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>South Korea’s Digital Nomad Visa Gains Traction:</b> The "Workation" visa program is successfully attracting long-term visitors, particularly in the tech and creative sectors in Seoul. <a href='https://www.koreaherald.com' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Hokkaido Luxury Wellness Boom:</b> A new wave of high-end, year-round wellness resorts is transforming Hokkaido from a seasonal ski hub into a perennial luxury destination. <a href='https://www.nikkei.com' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Sustainable Tourism Initiatives in Jeju:</b> Local authorities in Jeju Island are implementing new environmental fees and visitor caps to preserve the island's natural heritage against over-tourism. <a href='https://www.koreatimes.co.kr' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Regional Japan Rail Expansion:</b> New luxury rail routes through Kyushu are being introduced to encourage travelers to explore secondary cities outside the Tokyo-Osaka corridor. <a href='https://www.jr-east.co.jp' target='_blank' class='source-link'>Read Original Article →</a></li>
-</ul>
-
-<h2>🤖 AI & Technology</h2>
-<ul>
-    <li><b>Google Rebrands to "Gemini Enterprise Agent Platform":</b> In a major strategic shift, Google has consolidated its AI tools under a single agentic platform to streamline enterprise automation. <a href='https://thenextweb.com/news/google-cloud-next-ai-agents-agentic-era/' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Amazon Bedrock Introduces AI "Memory":</b> New integrations with Neptune and Mem0 allow AI agents to maintain persistent, company-specific context across long-term interactions. <a href='https://aws.amazon.com/blogs/machine-learning/company-wise-memory-in-amazon-bedrock-with-amazon-neptune-and-mem0/' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Humanoid Robot Market to Hit $8.7B by 2035:</b> Advancements in embodied AI and industrial applications are driving a massive surge in the valuation of the global humanoid robotics sector. <a href='https://www.globenewswire.com/news-release/2026/04/22/3278870/0/en/Humanoid-Robot-Market-Size-Worth-USD-8-78-Billion-by-2035-Driven-by-AI-Advancements-and-Expanding-Industrial-and-Consumer-Applications.html' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>The Danger of Static AI Authorization:</b> Experts warn that traditional security models are failing autonomous agents, necessitating a shift toward "Behavioral Credentials" for enterprise safety. <a href='https://www.oreilly.com/radar/behavioral-credentials-why-static-authorization-fails-autonomous-agents/' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Non-Human Identity Management Explosive Growth:</b> The market for managing the identities of bots and AI agents is projected to grow to $38.8 billion as zero-trust architectures become standard. <a href='https://www.globenewswire.com/news-release/2026/04/22/3279125/28124/en/Non-Human-Identity-Access-Management-Market-Global-Forecast-Report-2026-2036-Opportunities-in-Adoption-of-Zero-Trust-Architecture-Cloud-native-Applications-and-Regulatory-Complianc.html' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Whale Cloud and AGIBOT Strategic Partnership:</b> This alliance aims to accelerate the global expansion of embodied AI by combining full-stack digital capabilities with advanced robotics. <a href='https://en.antaranews.com/news/413431/whale-cloud-and-agibot-announce-strategic-partnership-to-accelerate-global-expansion-of-embodied-ai' target='_blank' class='source-link'>Read Original Article →</a></li>
-    <li><b>Digital Realty Reports Strong Infrastructure Growth:</b> The data center giant’s Q1 results reflect the massive capital expenditure required to support the ongoing global AI boom. <a href='https://www.globenewswire.com/news-release/2026/04/23/3280372/0/en/Digital-Realty-Reports-First-Quarter-2026-Results.html' target='_blank' class='source-link'>Read Original Article →</a></li>
-</ul></div>
+            <div class="card">
+                <h2>Singapore Business & SGX</h2>
+                <div class="summary">Summary generation temporarily unavailable.</div>
+                <div class="sources"><a href="https://www.thehindubusinessline.com/markets/stock-market-nifty-sensex-highlights-23rd-april-2026/article70895504.ece" target="_blank">Source 1</a> <a href="https://economictimes.indiatimes.com/wealth/invest/gift-city-vs-dubai-vs-singapore-what-you-need-to-know-while-choosing-your-investment-hub/articleshow/130346986.cms" target="_blank">Source 2</a> <a href="https://economictimes.indiatimes.com/markets/stocks/news/who-was-mark-mobius-and-why-was-the-40-billion-india-bull-famous-as-indiana-jones-of-emerging-markets/articleshow/130299025.cms" target="_blank">Source 3</a> <a href="https://www.thehindubusinessline.com/markets/stock-market-nifty-sensex-live-updates-7th-april-2026/article70830012.ece" target="_blank">Source 4</a> <a href="https://www.coindesk.com/business/2026/03/25/sbi-sony-back-startale-s-usd63-million-push-to-expand-japan-s-tokenized-finance-stack" target="_blank">Source 5</a> </div>
+            </div>
+    
+            <div class="card">
+                <h2>Tennis (Madrid Open/ATP)</h2>
+                <div class="summary">Summary generation temporarily unavailable.</div>
+                <div class="sources"><a href="https://www.hitc.com/jim-courier-backs-stefanos-tsitsipas-to-return-to-top-form/" target="_blank">Source 1</a> <a href="https://www.hitc.com/jannik-sinner-faces-key-decision-as-carlos-alcaraz-and-novak-djokovic-pull-out-of-madrid/" target="_blank">Source 2</a> <a href="https://economictimes.indiatimes.com/news/sports/novak-djokovic-pulls-out-of-madrid-open-due-to-injury/articleshow/130331800.cms" target="_blank">Source 3</a> <a href="https://www.sportingnews.com/us/tennis/news/carlos-alcaraz-jannik-sinner-score-monte-carlo-masters-result/632a80bf3c88ac25dff8ca97" target="_blank">Source 4</a> <a href="https://www.hitc.com/holger-rune-confirms-return-to-tennis-after-six-months-away-from-the-court/" target="_blank">Source 5</a> </div>
+            </div>
+    
+            <div class="card">
+                <h2>Japan & Korea Travel</h2>
+                <div class="summary">Summary generation temporarily unavailable.</div>
+                <div class="sources"><a href="https://www.rd.com/article/solo-travel-by-generation/" target="_blank">Source 1</a> <a href="https://en.antaranews.com/news/413471/smart-lighting-expo-and-lighting-fair-conclude-successfully" target="_blank">Source 2</a> <a href="https://economictimes.indiatimes.com/nri/visit/gujarati-travellers-cut-back-on-travel-plans-amid-geopolitical-uncertainty-expected-market-volatility/articleshow/130383806.cms" target="_blank">Source 3</a> <a href="http://wwd.com/business-news/financial/hermes-q1-sales-rise-2026-middle-east-tourism-challenges-1238916275/" target="_blank">Source 4</a> <a href="https://www.globenewswire.com/news-release/2026/04/13/3272226/0/en/Vacation-Rental-Market-to-Surpass-USD-136-Bn-by-2031-Asia-Pacific-Emerges-as-Fastest-Growing-Region-Amid-Steady-Global-Growth-Reports-Mordor-Intelligence.html" target="_blank">Source 5</a> </div>
+            </div>
+    
+            <div class="card">
+                <h2>Tech & AI Development</h2>
+                <div class="summary">Summary generation temporarily unavailable.</div>
+                <div class="sources"><a href="https://www.cmswire.com/digital-experience/nvidia-ceo-jensen-huang-told-the-saas-world-agentic-is-here-adobe-was-listening/" target="_blank">Source 1</a> <a href="https://www.techtarget.com/searcherp/feature/Who-owns-the-outcome-Accountability-in-the-hybrid-enterprise" target="_blank">Source 2</a> <a href="https://martechedge.com/news/bitly-launches-ai-tools-to-simplify-marketing-analytics" target="_blank">Source 3</a> <a href="https://pressportal.co.za/stream/story/f828368d50ac2d70-20260325.html" target="_blank">Source 4</a> </div>
+            </div>
+    
+            <div class="card">
+                <h2>Gaming Hardware</h2>
+                <div class="summary">Summary generation temporarily unavailable.</div>
+                <div class="sources"><a href="https://www.zdnet.com/home-and-office/home-entertainment/lg-g6-vs-lg-g5/" target="_blank">Source 1</a> <a href="https://www.tweaktown.com/news/111147/msi-launches-two-new-qd-oled-4k-240hz-31-5-inch-gaming-monitors-with-4th-gen-samsung-panels/index.html" target="_blank">Source 2</a> <a href="https://www.redflagdeals.com/deal/computers-electronics/samsung-canada-deals-save-on-galaxy-tvs-laptops-appliances-april-offers/" target="_blank">Source 3</a> <a href="https://gizmodo.com/sonys-new-gaming-monitor-can-hit-720hz-but-theres-a-small-catch-2000747890" target="_blank">Source 4</a> <a href="https://www.windowscentral.com/accessories/monitors/480hz-1080p-or-240hz-4k-no-game-this-discounted-display-cant-handle" target="_blank">Source 5</a> </div>
+            </div>
+    
+        </main>
+        <div class="footer">
+            Generated by Gemini 1.5 Flash • Curated for Solution Architecture
+        </div>
+    </div>
 </body>
 </html>
