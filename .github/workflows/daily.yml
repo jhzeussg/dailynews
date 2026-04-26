@@ -2,9 +2,8 @@ name: Daily News Update
 
 on:
   schedule:
-    # This tells GitHub to run at 10:00 AM Singapore Time
-    - cron: '0 10 * * *'
-      timezone: 'Asia/Singapore'
+    # 7:00 AM Singapore Time (23:00 UTC)
+    - cron: '0 23 * * *'
   workflow_dispatch:
 
 # NEW: This line gives the robot permission to save the index.html file
