@@ -1,124 +1,172 @@
 import os
 import requests
-import google.generativeai as genai
 from datetime import datetime
+import google.generativeai as genai
 
-# 1. SETUP
-NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
-GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
+# --- CONFIGURATION ---
+# Ensure these are set in your GitHub Repository Secrets
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-3-flash-preview')
+model = genai.GenerativeModel('gemini-1.5-flash')
 
-def get_basket_news():
-    """Performs 5 distinct searches to ensure high story density."""
-    categories = {
-        "Singapore Business": "Singapore economy OR SME news Singapore",
-        "Finance & SGX": "SGX REIT dividends OR Singapore blue chip stocks",
-        "Tennis": "ATP tennis news OR Madrid Open results OR Sinner Alcaraz",
-        "Japan & Korea Travel": "Japan travel logistics OR Korea Shinkansen KTX",
-        "AI & Tech": "enterprise AI automation OR software architecture trends"
-    }
+# Categories tailored to your specific interests
+CATEGORIES = {
+    "Singapore Business & SGX": "Singapore finance stocks economy",
+    "Tennis (Madrid Open/ATP)": "Madrid Open tennis ATP results",
+    "Japan & Korea Travel": "Japan South Korea travel luxury tourism",
+    "Tech & AI Development": "Adobe Experience Manager generative AI software",
+    "Gaming Hardware": "4K OLED monitors gaming tech"
+}
+
+def fetch_news(query):
+    url = f"https://newsapi.org/v2/everything?q={query}&sortBy=publishedAt&language=en&apiKey={NEWS_API_KEY}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json().get('articles', [])[:5]
+    return []
+
+def summarize_articles(articles):
+    if not articles:
+        return "No significant updates in this category today."
     
-    combined_context = ""
-    for name, query in categories.items():
-        url = f"https://newsapi.org/v2/everything?q={query}&language=en&sortBy=publishedAt&pageSize=20&apiKey={NEWS_API_KEY}"
-        try:
-            response = requests.get(url).json()
-            articles = response.get('articles', [])
-            combined_context += f"--- CATEGORY: {name} ---\n"
-            for a in articles[:12]:
-                if a.get('description'):
-                    combined_context += f"Title: {a['title']}\nSnippet: {a['description']}\nLink: {a['url']}\n\n"
-        except: continue
-    return combined_context
-
-def generate_ai_summary(raw_data):
-    prompt = f"""
-    You are a Chief of Staff. Create an expansive Intelligence Brief.
-    VOLUME: Target 5-8 high-quality stories PER CATEGORY. 
-
-    CATEGORIES:
-    1. 🇸🇬 Singapore & Local Business
-    2. 💰 Finance & SGX
-    3. 🎾 Tennis
-    4. ✈️ Japan & Korea Travel
-    5. 🤖 AI & Technology
-
-    FORMATTING:
-    - Wrap each category in <h2>Category Name</h2> and a <ul>.
-    - Each story MUST be an <li> with a bold headline and a 1-sentence insight.
-    - Links: <a href='URL' target='_blank' class='source-link'>Read Original Article →</a>
+    context = "\n".join([f"- {a['title']}: {a['description']}" for a in articles])
+    prompt = f"Summarize the following news stories into a single, high-density professional briefing paragraph for a Solution Architect. Focus on actionable facts:\n\n{context}"
     
-    Data:
-    {raw_data}
-    """
     try:
         response = model.generate_content(prompt)
         return response.text
-    except Exception as e:
-        return f"<p>Error: {e}</p>"
+    except:
+        return "Summary generation temporarily unavailable."
 
-# --- EXECUTION ---
-news_context = get_basket_news()
-ai_html_body = generate_ai_summary(news_context)
+# --- DATA PROCESSING ---
+news_data = {}
+for display_name, search_query in CATEGORIES.items():
+    articles = fetch_news(search_query)
+    summary = summarize_articles(articles)
+    news_data[display_name] = {
+        "summary": summary,
+        "links": articles
+    }
 
-final_html = f"""
+# --- HTML GENERATION (PLATINUM EDITION + ANALYTICS) ---
+now = datetime.now().strftime('%d %b %Y | %I:%M %p SGT')
+
+html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence Hub 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Intelligence Hub | {now}</title>
+    
+    <script data-goatcounter="https://jhzeussg.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+
     <style>
         :root {{
-            --primary: #0f172a; --accent: #3b82f6; --bg: #f8fafc; --glass: rgba(255, 255, 255, 0.9);
+            --glass: rgba(255, 255, 255, 0.08);
+            --bg: #0f172a;
+            --accent: #38bdf8;
+            --text: #f1f5f9;
         }}
-        body {{ 
-            font-family: 'Inter', sans-serif; background-color: var(--bg); color: #1e293b; margin: 0; 
+        body {{
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }}
+        .container {{
+            max-width: 1000px;
+            margin: 0 auto;
         }}
         header {{
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white; padding: 4rem 1rem; text-align: center;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--glass);
+            padding-bottom: 20px;
         }}
-        .container {{ max-width: 1000px; margin: -3rem auto 4rem; padding: 0 1.5rem; }}
-        .timestamp {{ font-size: 0.9rem; opacity: 0.7; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }}
-        
-        h2 {{ 
-            font-size: 1.25rem; color: var(--primary); text-transform: uppercase; 
-            letter-spacing: 1px; margin: 3rem 0 1rem; display: flex; align-items: center;
+        .card {{
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease;
         }}
-        h2::after {{ content: ""; flex: 1; height: 1px; background: #e2e8f0; margin-left: 15px; }}
-
-        ul {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; padding: 0; }}
-        li {{ 
-            background: var(--glass); backdrop-filter: blur(10px);
-            padding: 2rem; border-radius: 20px; border: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column;
+        .card:hover {{
+            transform: translateY(-4px);
+            border-color: var(--accent);
         }}
-        li:hover {{ border-color: var(--accent); transform: translateY(-2px); transition: 0.3s; }}
-        
-        .source-link {{
-            margin-top: auto; padding-top: 15px; color: var(--accent); text-decoration: none;
-            font-weight: 600; font-size: 0.8rem;
+        h2 {{
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }}
-
-        @media (max-width: 600px) {{
-            ul {{ grid-template-columns: 1fr; }}
-            header {{ padding: 3rem 1rem; }}
+        .summary {{
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }}
+        .sources {{
+            font-size: 0.85rem;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }}
+        a {{
+            color: var(--accent);
+            text-decoration: none;
+            opacity: 0.8;
+        }}
+        a:hover {{
+            opacity: 1;
+            text-decoration: underline;
+        }}
+        .footer {{
+            text-align: center;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 50px;
         }}
     </style>
 </head>
 <body>
-    <header>
-        <h1>Intelligence Hub</h1>
-        <div class="timestamp">Market Brief • {datetime.now().strftime('%d %b %Y')}</div>
-    </header>
-    <div class="container">{ai_html_body}</div>
+    <div class="container">
+        <header>
+            <h1>Intelligence Hub</h1>
+            <p>{now}</p>
+        </header>
+
+        <main>
+"""
+
+for category, data in news_data.items():
+    links_html = "".join([f'<a href="{a["url"]}" target="_blank">Source {i+1}</a> ' for i, a in enumerate(data['links'])])
+    html_content += f"""
+            <div class="card">
+                <h2>{category}</h2>
+                <div class="summary">{data['summary']}</div>
+                <div class="sources">{links_html}</div>
+            </div>
+    """
+
+html_content += """
+        </main>
+        <div class="footer">
+            Generated by Gemini 1.5 Flash • Curated for Solution Architecture
+        </div>
+    </div>
 </body>
 </html>
 """
 
 with open("index.html", "w", encoding="utf-8") as f:
-    f.write(final_html)
+    f.write(html_content)
