@@ -7,7 +7,7 @@ on:
     - cron: '0 23 * * *'
   workflow_dispatch:
 
-# NEW: This line gives the robot permission to save the index.html file
+# NEW: This line gives the robot permission to save the index.html file 
 permissions:
   contents: write
 
