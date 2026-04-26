@@ -2,7 +2,7 @@ name: Daily News Update
 
 on:
   schedule:
-    - cron: '0 23 * * *' # 7:00 AM Singapore Time
+    - cron: '15 0 * * *' # 7:00 AM Singapore Time
   workflow_dispatch:
 
 # NEW: This line gives the robot permission to save the index.html file
